@@ -2,8 +2,8 @@ package mk.ukim.finki.lab1.service;
 
 import mk.ukim.finki.lab1.model.Chef;
 import mk.ukim.finki.lab1.model.Dish;
-import mk.ukim.finki.lab1.repository.InMemoryChefRepository;
-import mk.ukim.finki.lab1.repository.InMemoryDishRepository;
+import mk.ukim.finki.lab1.repository.ChefRepository;
+import mk.ukim.finki.lab1.repository.DishRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +11,9 @@ import java.util.List;
 @Service
 public class ChefServiceImpl implements ChefService {
 
-    private final InMemoryChefRepository chefRepository;
-    private final InMemoryDishRepository dishRepository;
-    public ChefServiceImpl(InMemoryChefRepository chefRepository, InMemoryDishRepository dishRepository) {
+    private final ChefRepository chefRepository;
+    private final DishRepository dishRepository;
+    public ChefServiceImpl(ChefRepository chefRepository, DishRepository dishRepository) {
         this.chefRepository = chefRepository;
         this.dishRepository = dishRepository;
     }

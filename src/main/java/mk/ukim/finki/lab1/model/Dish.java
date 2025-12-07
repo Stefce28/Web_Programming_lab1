@@ -1,29 +1,43 @@
 package mk.ukim.finki.lab1.model;
-
-
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
+@Entity
+@Table(name="dishes")
 public class Dish {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String dishId;
     private String name;
     private String cuisine;
     private int preparationTime;
+    @ManyToOne
+    private Chef chef;
 
-    public Dish(String dishId, String name, String cuisine, int preparationTime) {
+    public Dish(String dishId, String name, String cuisine, int preparationTime,Chef chef) {
         this.dishId = dishId;
         this.name = name;
         this.cuisine = cuisine;
         this.preparationTime = preparationTime;
         this.id = (long) (Math.random()*1000);
+        this.chef = chef;
     }
     public Dish(){
     }
 
     public String getDishId() {
         return dishId;
+    }
+
+    public Chef getChef() {
+        return chef;
+    }
+
+    public void setChef(Chef chef) {
+        this.chef = chef;
     }
 
     public Long getId() {

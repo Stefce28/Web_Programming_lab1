@@ -37,13 +37,15 @@ public class DishController {
     public String saveDish(@RequestParam String dishId,
                            @RequestParam String name,
                            @RequestParam String cuisine,
-                           @RequestParam int preparationTime){
-        dishService.create(dishId, name, cuisine, preparationTime);
+                           @RequestParam int preparationTime,
+                           @RequestParam Long chefId){
+        dishService.create(dishId, name, cuisine, preparationTime, chefId);
         return "redirect:/dishes";
     }
 
     @GetMapping("/dish-form")
     public String getAddDishPage(Model model){
+        model.addAttribute("chefs", chefService.listChefs());
         return "dish-form.html";
     }
 
@@ -52,8 +54,9 @@ public class DishController {
                            @RequestParam String dishId,
                            @RequestParam String name,
                            @RequestParam String cuisine,
-                           @RequestParam int preparationTime){
-        dishService.update(id, dishId, name, cuisine, preparationTime);
+                           @RequestParam int preparationTime,
+                           @RequestParam Long chefId){
+        dishService.create(dishId, name, cuisine, preparationTime, chefId);
         return "redirect:/dishes";
     }
 
@@ -68,6 +71,7 @@ public class DishController {
         if (dishService.findById(id)==null){
             return "redirect:/dishes?error=DishNotFound";
         }
+        model.addAttribute("chefs", chefService.listChefs());
         model.addAttribute("dish", dishService.findById(id));
         return "dish-form.html";
     }

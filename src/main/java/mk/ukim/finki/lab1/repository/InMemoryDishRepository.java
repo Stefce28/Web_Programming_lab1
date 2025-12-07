@@ -1,3 +1,4 @@
+/*
 package mk.ukim.finki.lab1.repository;
 
 import mk.ukim.finki.lab1.bootstrap.DataHolder;
@@ -39,3 +40,4 @@ public class InMemoryDishRepository implements DishRepository{
         DataHolder.dishes.removeIf(d -> d.getId().equals(id));
     }
 }
+*/
