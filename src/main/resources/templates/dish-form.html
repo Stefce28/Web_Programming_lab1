@@ -7,9 +7,7 @@
 <body>
 
 <form method="post"
-      th:action="${dish != null} ?
-                 @{/dishes/edit/{id}(id=${dish.id})} :
-                 @{/dishes/add}">
+      th:action="${dish == null} ? @{/dishes/add} : @{/dishes/edit/{id}(id=${dish.id})}">
     <div>
         <label for="dishId">Dish ID:</label>
         <input type="text"
@@ -52,7 +50,7 @@
         <select id="chef" name="chefId">
             <option th:each="chef : ${chefs}"
                     th:value="${chef.id}"
-                    th:text="${chef.name}"
+                    th:text="${chef.firstName + ' ' +chef.lastName}"
                     th:selected="${dish != null and dish.chef != null and dish.chef.id == chef.id}">
             </option>
         </select>
@@ -60,7 +58,10 @@
     <br>
 
 
-    <input type="hidden" name="id" th:value="${dish != null ? dish.id : ''}">
+    <input type="hidden"
+           name="id"
+           th:if="${dish != null}"
+           th:value="${dish.id}">
 
     <button type="submit">Submit</button>
 </form>

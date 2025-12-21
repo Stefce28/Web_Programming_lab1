@@ -22,7 +22,6 @@ public class Dish {
         this.name = name;
         this.cuisine = cuisine;
         this.preparationTime = preparationTime;
-        this.id = (long) (Math.random()*1000);
         this.chef = chef;
     }
     public Dish(){

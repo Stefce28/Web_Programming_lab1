@@ -46,6 +46,7 @@ public class DishController {
     @GetMapping("/dish-form")
     public String getAddDishPage(Model model){
         model.addAttribute("chefs", chefService.listChefs());
+        model.addAttribute("dish", null);
         return "dish-form.html";
     }
 
@@ -56,7 +57,7 @@ public class DishController {
                            @RequestParam String cuisine,
                            @RequestParam int preparationTime,
                            @RequestParam Long chefId){
-        dishService.create(dishId, name, cuisine, preparationTime, chefId);
+        dishService.update(id,dishId, name, cuisine, preparationTime, chefId);
         return "redirect:/dishes";
     }
 

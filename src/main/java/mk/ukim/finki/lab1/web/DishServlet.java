@@ -37,7 +37,7 @@ public class DishServlet extends HttpServlet {
 
         Long chefId = Long.parseLong(req.getParameter("chefId"));
         Chef chef = chefService.findById(chefId);
-        List<Dish> dishes = dishService.listDishes();
+        List<Dish> dishes = dishService.findAllByChef_Id(chefId);
 
         IWebExchange webExchange = JakartaServletWebApplication
                 .buildApplication(getServletContext())
